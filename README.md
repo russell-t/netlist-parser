@@ -4,6 +4,6 @@ This code parses a "netlist" of the format specified in netlist.txt. From the ne
   
 # How to use
 
-Simply run dc.m. Change the circuit configuration in the netlist.txt file, but beware there is currently **NO** error checking of the netlist, so make sure the format, nodes, and values are correct.
+Simply run dc.m. Change the circuit configuration in the netlist.txt file, but beware there is currently **NO** error checking of the netlist, so make sure the format, nodes, and values are correct. Try it with 'netlist.txt' or 'netlist2.txt', or create your own. Just change the input value of parse( ) in dc.m to the correct filename.
 
 The output variable 'dc_values' contains the node voltages of the circuit starting from node 1, followed by the source current Is as the last entry.
