@@ -1,25 +1,14 @@
-function a = stamp_in_voltage_source(ain,n1,n2)
-%STAMP_IN_VOLTAGE_SOURCE Stamps in a voltage source
-%   
-    a=ain;
-    
-    % this assumes 1 voltage source Vs
-    % where Is values are in the last column of the
-    % a matrix
-    if n1 ~=0
-        a(n1,length(a)) = 1;
-    end
-    if n2 ~=0
-        a(n2,length(a)) = -1;
-    end
-    
-    % extra equation for Is
-    if n1 ~=0
-        a(length(a),n1) = 1;
-    end
-    if n2 ~=0
-        a(length(a),n2) = -1;
-    end
-    
+function [a,y]=stamp_in_voltage_source(ain,yin,plusnode,minusnode,row,voltage)
+% All credit goes to Bruce Segee at UMaine for this code
+a=ain;
+y=yin;
+if plusnode ~=0 
+    a(row,plusnode)= a(row,plusnode)+1;
+    a(plusnode,row)=a(plusnode,row)+1;
 end
-
+if(minusnode ~=0) 
+    a(row,minusnode)=a(row,minusnode)-1;
+    a(minusnode,row)=a(minusnode,row)-1;
+end
+y(row)=voltage;
+end

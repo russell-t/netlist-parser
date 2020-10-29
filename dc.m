@@ -1,2 +1,2 @@
-[a,y] = parse('netlist.txt');
+[a,y] = parse('netlist2.txt');
 dc_values = inv(a)*y
