@@ -1,10 +1,10 @@
+function [a, y] = parse(FILENAME)
 % We want to be able to insert voltage sources, current sources, resistors. For now just assume dc analysis. We need to
 % be able to count the number of resistors, voltage sources, current sources. 
 % We also want the component order to not matter in the netlist.
 
-clear all
 % open the netlist
-fid = fopen('circuit1.txt'); 
+fid = fopen(FILENAME); 
 C = textscan(fid, '%s %f %f %s'); 
 
 nnums = [C{2};C{3}]; % grab the node numbers
@@ -37,7 +37,5 @@ y = zeros(size,1);
 for i = 1:numElements
     [a,y] = stamp(a,y,C{2}(i),C{3}(i),str2num(C{4}{i}),type(i),C{1}{i},numNodes);
 end
-
-inv(a)*y
 
 fclose(fid);
